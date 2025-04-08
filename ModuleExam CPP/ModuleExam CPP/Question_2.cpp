@@ -46,6 +46,9 @@ int main()
 
 	Book b1(title, author, price);
 	b1.display();
+
+	Book b2 = b1;
+	b2.display();
 	
 	return 0;
 
