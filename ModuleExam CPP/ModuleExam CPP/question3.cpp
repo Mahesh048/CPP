@@ -135,7 +135,7 @@ int main()
 			{
 				cout << "Enter Amount to Withdraw :" << endl;
 				cin >> amount;
-				if (amount > 0)
+				if (amount < bank1.getbal())
 				{
 					bank1.withdraw(amount);
 				}
