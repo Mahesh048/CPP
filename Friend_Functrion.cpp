@@ -1,29 +1,48 @@
 #include<iostream>
-
 using namespace std;
+
+class two; // forward declaration of class two for friend function in class one
 
 class one
 {
-    int a;
+
+	int num1;
 public:
-    friend void cal(one a);
 
+	one(int n)
+	{
+		num1 = n;
+	}
+
+	void friend great(one o1, two t1); // here two t1 class object will search for class thats why we use forward declaration to avoid error
 };
-class two
+
+class two 
 {
-    int b;
+	int num2;
 public:
-    friend void cal(one a, two b);
+	two(int n1)
+	{
+		num2 = n1;
+	}
 
+	void friend great(one o1, two t1);
 };
-
-void cal(int f, int g)
+void great(one o1, two t1)
 {
-    cout<<"Greatest : "<<(f > g ? f : g);
+	cout << "Greatest number is : " << (o1.num1 > t1.num2 ? o1.num1 : t1.num2)<< endl;
+	
 }
+
 int main()
 {
-    one x;
-    two y;
-    cal(10, 20);
+	int num1, num2;
+
+	cout << "Enter two numbers to find greatest " << endl;
+	cin >> num1 >> num2;
+	
+	one o(num1);
+	two t(num2);
+
+	great(o, t);
 }
